@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- 使用xml的方式注册Spring=================================================== -->
 
     <!-- 将类注册成Spring的bean -->
-    <bean id="UserService" class="com.example.spring.service.UserServiceImpl" />
+    <!--<bean id="UserService" class="com.example.spring.service.UserServiceImpl" />-->
 
     <!--  使用构造方法进行依赖注入  -->
     <!--<bean id="User" class="com.example.spring.pojo.User">
@@ -17,11 +20,14 @@
     </bean>-->
 
     <!-- 使用Set方法进行依赖注入，当方法中包含有参构造方法时，无法使用Set方法进行依赖注入 -->
-    <bean id="User" class="com.example.spring.pojo.User">
+    <!--<bean id="User" class="com.example.spring.pojo.User">
         <property name="name" value="Andrew"/>
         <property name="age" value="23"/>
-    </bean>
+    </bean>-->
 
     <!-- 使用注解的方式注册Spring=================================================== -->
+
+    <!--使用IOC的注解开发，需要配置组件扫描，声明哪个包下的类使用IOC的注解-->
+    <context:component-scan base-package="com.example.spring" />
 
 </beans>

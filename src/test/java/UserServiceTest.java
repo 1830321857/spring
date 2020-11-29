@@ -9,15 +9,16 @@ public class UserServiceTest {
     @Test
     public void test1(){
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        UserService userService = (UserService) context.getBean("UserService");
+        UserService userService = (UserService) context.getBean("userServiceImpl");
         userService.addUser();
     }
 
     @Test
     public void test2(){
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        User user = context.getBean("User", User.class);
+        User user = context.getBean("user", User.class);
         String info = user.toString();
         System.out.println(info);
+        user.getUserService().searchUser();
     }
 }
